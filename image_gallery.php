@@ -1,7 +1,7 @@
 <?php    
 /*
 *File name:      image_gallery.php
-*                     Purpose: Displays a gallery of thumbnail images.
+*                     Purpose: returns a gallery of thumbnail images.
 *                     Copyright: Reuben Rova  All rights reserved.
 *                     Current rev. 2012-11-03
 *                     Origin - 2012-09-12
@@ -13,7 +13,7 @@
 
 
 /*INSTRUCTIONS =======================================================================
- * This script creates img galleries at runtime based off a directory structure.
+ * This script creates image galleries at runtime based off a directory structure.
  * The default path to your galleries is </images/photos>.
  * Directories inside /photos are image galleries. You can name them anything you like.
  * Inside your image gallery directories there needs to be a </thumbs> directory.
@@ -31,8 +31,8 @@ function imgGallery($gallery = "urban"){
 
 
 	// set the location of the images
-		$locStr="images/photos/".$gallery."/thumbs"; 
-		$galleryPath="images/photos/".$gallery."/";
+	$locStr="images/photos/".$gallery."/thumbs"; 
+	$galleryPath="images/photos/".$gallery."/";
 	
 	// open this location 
 	$targetDir=opendir($locStr);  
@@ -64,34 +64,34 @@ function imgGallery($gallery = "urban"){
 	$i=0;
 	
 	//Fill the columns with images and equalize column heights.
-	while($i<$fTotal){
-	  while($ch1<=$ch3&&$i<$fTotal){
-	    $col1[]="<a href=".DOMAIN.$galleryPath.$fileList[$i]." rel=\"shadowbox[".$gallery."]\"><img src=\"".DOMAIN.$locStr."/".$fileList[$i]."\" alt=\"gallery-thumbnail\" width=\"198px\" /></a>";
-	    $imgInfo=getimagesize($locStr."/".$fileList[$i]); 
-	    $ch1=$imgInfo[1]+$ch1;
+	while($i < $fTotal){
+	  while($ch1 <= $ch3 && $i < $fTotal){
+	    $col1[] = "<a href=".DOMAIN.$galleryPath.$fileList[$i]." rel=\"shadowbox[".$gallery."]\"><img src=\"".DOMAIN.$locStr."/".$fileList[$i]."\" alt=\"gallery-thumbnail\" width=\"198px\" /></a>";
+	    $imgInfo = getimagesize($locStr."/".$fileList[$i]); 
+	    $ch1 = $imgInfo[1]+$ch1;
 	    $i++;
 	  }
-	  while($ch2<=$ch1&&$i<$fTotal){
-	    $col2[]="<a href=".DOMAIN.$galleryPath.$fileList[$i]." rel=\"shadowbox[".$gallery."]\"><img src=\"".DOMAIN.$locStr."/".$fileList[$i]."\" alt=\"gallery-thumbnail\" width=\"198px\" /></a>"; 
-	    $imgInfo=getimagesize($locStr."/".$fileList[$i]); 
-	    $ch2=$imgInfo[1]+$ch2;  
+	  while($ch2 <= $ch1 && $i < $fTotal){
+	    $col2[] = "<a href=".DOMAIN.$galleryPath.$fileList[$i]." rel=\"shadowbox[".$gallery."]\"><img src=\"".DOMAIN.$locStr."/".$fileList[$i]."\" alt=\"gallery-thumbnail\" width=\"198px\" /></a>"; 
+	    $imgInfo = getimagesize($locStr."/".$fileList[$i]); 
+	    $ch2 = $imgInfo[1]+$ch2;  
 	    $i++; 
 	  }  
-	  while($ch3<=$ch2&&$i<$fTotal){
-	    $col3[]="<a href=".DOMAIN.$galleryPath.$fileList[$i]." rel=\"shadowbox[".$gallery."]\"><img src=\"".DOMAIN.$locStr."/".$fileList[$i]."\" alt=\"gallery-thumbnail\" width=\"198px\" /></a>";  
-	    $imgInfo=getimagesize($locStr."/".$fileList[$i]); 
-	    $ch3=$imgInfo[1]+$ch3;
+	  while($ch3 <= $ch2 && $i < $fTotal){
+	    $col3[] = "<a href=".DOMAIN.$galleryPath.$fileList[$i]." rel=\"shadowbox[".$gallery."]\"><img src=\"".DOMAIN.$locStr."/".$fileList[$i]."\" alt=\"gallery-thumbnail\" width=\"198px\" /></a>";  
+	    $imgInfo = getimagesize($locStr."/".$fileList[$i]); 
+	    $ch3 = $imgInfo[1]+$ch3;
 	    $i++;   
 	  } 
 	}
 	
 	//close the columns 
-	$col1[]="</div>";
-	$col2[]="</div>";
-	$col3[]="</div><br style='clear: both'/>";
+	$col1[] = "</div>";
+	$col2[] = "</div>";
+	$col3[] = "</div><br style='clear: both'/>";
 	
 	// convert to string
-	$imgElements=implode(' ',$col1).implode(' ',$col2).implode(' ',$col3);
+	$imgElements = implode(' ',$col1).implode(' ',$col2).implode(' ',$col3);
 	
 	return $imgElements;
 };
