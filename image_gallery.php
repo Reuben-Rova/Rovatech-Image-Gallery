@@ -2,7 +2,7 @@
 /*
 *File name:      image_gallery.php
 *                     Purpose: returns a gallery of thumbnail images.
-*                     Copyright: Reuben Rova  All rights reserved.
+*
 *                     Current rev. 2012-11-03
 *                     Origin - 2012-09-12
 *                     Notes - 
